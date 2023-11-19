@@ -1,6 +1,5 @@
 # Author: Ke
 import psycopg2
-
 from password_crypto import decrypt_password
 
 

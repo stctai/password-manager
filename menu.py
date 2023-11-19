@@ -1,6 +1,5 @@
-# Note: temporarily disable, since all other files are not ready, please uncomment these when other files are ready
+# Author: Minjie Shen
 import subprocess
-
 from database_manager import store_passwords, find_password, find_users
 from password_generator import generate_password
 from password_crypto import encrypt_password

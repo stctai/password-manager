@@ -25,5 +25,12 @@ To set up a new Docker container, with PostgreSQL installed, you need to do seve
       docker run --name my-password-manager-container -p 5432:5432 -d my-password-manager-db
       ```
      
+## How to create your password manager
+By: Minjie
 
-
+After you start the app on your local machine, you will be prompt to type in the master password.
+Once you are sucessfully authenticated, you will be provided with three choices:
+1. Create new password
+2. Find all sites and apps connected to an email
+3. Find a password for a site or app
+Then you can press Q to quit the application

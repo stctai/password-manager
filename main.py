@@ -1,3 +1,4 @@
+# Author: Minjie Shen
 import menu
 from menu import create, menu, find, find_accounts
 from master_password import get_master_passowrd
@@ -24,7 +25,7 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-        # Get the next choice after handling the current one
+        # Get the next choice after handling the current one to avoid infinite loop in choice 3
         choice = menu()
 
 
