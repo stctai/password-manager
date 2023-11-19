@@ -9,7 +9,7 @@ import getpass
 import sys
 import hashlib 
 from menu import create, menu, find, find_accounts
-from passowrd import get_master_passowrd
+from master_passowrd import get_master_passowrd
 
 def main():
     
