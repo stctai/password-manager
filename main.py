@@ -8,11 +8,20 @@ import argparse
 import getpass
 import sys
 import hashlib 
-
 from menu import create, menu, find, find_accounts
+from passowrd import get_master_passowrd
 
 def main():
-
+    
+    input_password  = input('Please provide the master password to start:')
+    master_password = get_master_passowrd()
+     
+    if input_password == master_password:
+        print("\nSucessfully Authenticated.\n")
+    else:
+        print('\nPassword was incorrect!\n')
+        exit() 
+    
     choice = menu()
     while choice != 'Q':
         if choice == '1':
