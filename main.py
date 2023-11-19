@@ -1,6 +1,6 @@
 import menu
 # Note: temporarily disable, since all other files are not ready, please uncomment these when other files are ready
-# import hash_maker
+# import password_generator
 # import database_manager 
 # import password_manager
 # import psycopg2

@@ -1,6 +1,6 @@
 # Note: temporarily disable, since all other files are not ready, please uncomment these when other files are ready
-# from hash_maker import password
-import subprocess 
+# from password_generator import generate_password, hash_password
+import subprocess
 # from database_manager import store_passwords, find_users, find_password 
 
 def menu():
@@ -18,10 +18,10 @@ def create():
 # Note: temporarily disable, since all other files are not ready, please uncomment these when other files are ready
 
 #    app_name = input()
-#    print('Please provide a simple password for this site: ')
+#    print("Please enter the length of the password: ")
 #    plaintext = input()
-#    passw = password(plaintext, app_name, 12)
-#    subprocess.run('xclip', universal_newlines=True, input=passw)
+#    pw = generate_password(length)
+#    subprocess.run('xclip', universal_newlines=True, input=pw)
 #    print('-'*30)
 #    print('')
 #    print('Your password has now been created and copied to your clipboard')
@@ -32,7 +32,8 @@ def create():
 #    if username == None:
 #        username = ''
 #    url = input('Please paste the url to the site that you are creating the password for')
-#    store_passwords(passw, user_email, username, url, app_name)
+#    hashed_pw = hash_password(pw)
+#    store_passwords(pw, user_email, username, url, app_name)
 
 def find():
    print('Please proivide the name of the site or app you want to find the password to')
