@@ -29,16 +29,24 @@ To set up a new Docker container, with PostgreSQL installed, you need to do seve
 
 3. Intall the the packages listed in the requirements.txt file with the specified versions
    Run this command in this project terminal
-      "pip install -r requirements.txt"
+      ```
+      pip install -r requirements.txt
+      ```
    This command reads the requirements.txt file and installs the specified packages along with their versions.
 
 
 ## How to create your password manager
 By: Minjie
 
-After you start the app on your local machine through "python main.py" , you will be prompt to type in the master password.
+After you start the app on your local machine through 
+   ```
+   python main.py
+   ```
+   , you will be prompt to type in the master password. By default, for the simplicity, we use general "password" as the master password.
+
 Once you are sucessfully authenticated, you will be provided with three choices:
-   1. Create new password
-   2. Find all sites and apps connected to an email
-   3. Find a password for a site or app
+   1. Create new password.
+   2. Find all sites and apps connected to an email.
+   3. Find a password for a site or app.
+
 After all the operations you want to make, you can press Q to quit the application safely.
