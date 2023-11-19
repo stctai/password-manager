@@ -1,6 +1,7 @@
 # Author: Ke
 import psycopg2
-from password_crypto import decrypt_password
+
+from password_crypto import encrypt_password, decrypt_password
 
 
 def store_passwords(password, user_email, username, url, app_name):
@@ -8,7 +9,8 @@ def store_passwords(password, user_email, username, url, app_name):
         connection = connect()
         cursor = connection.cursor()
         postgres_insert_query = """ INSERT INTO accounts (password, email, username, url, app_name) VALUES (%s, %s, %s, %s, %s)"""
-        record_to_insert = (password, user_email, username, url, app_name)
+        encrypted_pw = encrypt_password(password)
+        record_to_insert = (encrypted_pw, user_email, username, url, app_name)
         cursor.execute(postgres_insert_query, record_to_insert)
         connection.commit()
     except (Exception, psycopg2.Error) as error:
@@ -32,9 +34,8 @@ def find_password(app_name):
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchone()
-        decrypted_password = decrypt_password(result)
-        print('Password is: ')
-        print(decrypted_password)
+        pw = decrypt_password(result[0])
+        print('Password is: ', pw)
 
     except (Exception, psycopg2.Error) as error:
         print(error)

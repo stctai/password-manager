@@ -2,7 +2,6 @@
 import subprocess
 from database_manager import store_passwords, find_password, find_users
 from password_generator import generate_password
-from password_crypto import encrypt_password
 
 
 def menu():
@@ -17,7 +16,7 @@ def menu():
 
 
 def create():
-    print('Please proivide the name of the site or app you want to generate a password for')
+    print('Please proivide the name of the site or app you want to generate a password for: ')
     app_name = input()
     print("Please enter the length of the password: ")
     length = input()
@@ -28,13 +27,12 @@ def create():
     print('Your password has now been created and copied to your clipboard')
     print('')
     print('-' * 30)
-    user_email = input('Please provide a user email for this app or site')
-    username = input('Please provide a username for this app or site (if applicable)')
+    user_email = input('Please provide a user email for this app or site: ')
+    username = input('Please provide a username for this app or site (if applicable): ')
     if username == None:
         username = ''
-    url = input('Please paste the url to the site that you are creating the password for')
-    encrypted_password = encrypt_password(pw)
-    store_passwords(encrypted_password, user_email, username, url, app_name)
+    url = input('Please paste the url to the site that you are creating the password for: ')
+    store_passwords(pw, user_email, username, url, app_name)
 
 
 def find():
