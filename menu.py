@@ -2,7 +2,8 @@
 import subprocess
 
 from database_manager import store_passwords, find_password, find_users
-from password_generator import generate_password, hash_password
+from password_generator import generate_password
+from password_crypto import encrypt_password
 
 
 def menu():
@@ -33,8 +34,8 @@ def create():
     if username == None:
         username = ''
     url = input('Please paste the url to the site that you are creating the password for')
-    # hashed_pw = hash_password(pw)
-    store_passwords(pw, user_email, username, url, app_name)
+    encrypted_password = encrypt_password(pw)
+    store_passwords(encrypted_password, user_email, username, url, app_name)
 
 
 def find():

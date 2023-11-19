@@ -1,7 +1,5 @@
 import string
 import random
-import bcrypt
-
 
 characterList = ""
 characterList += string.ascii_letters
@@ -17,8 +15,3 @@ def generate_password(length):
         password.append(randomchar)
 
     return "".join(password)
-
-
-def hash_password(password):
-    salt = bcrypt.gensalt()
-    bcrypt.hashpw(password, salt)

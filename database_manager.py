@@ -1,6 +1,8 @@
 # Author: Ke
 import psycopg2
 
+from password_crypto import decrypt_password
+
 
 def store_passwords(password, user_email, username, url, app_name):
     try:
@@ -31,8 +33,9 @@ def find_password(app_name):
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchone()
+        decrypted_password = decrypt_password(result)
         print('Password is: ')
-        print(result[0])
+        print(decrypted_password)
 
     except (Exception, psycopg2.Error) as error:
         print(error)
