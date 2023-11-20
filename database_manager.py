@@ -55,7 +55,11 @@ def find_users(user_email):
         print('')
         for row in result:
             for i in range(0, len(row) - 1):
-                print(data[i] + str(row[i]))
+                if(i == 1):
+                    pw = decrypt_password(bytearray(row[i]))
+                    print(data[i] + str(pw))
+                else:
+                    print(data[i] + str(row[i]))
         print('')
         print('-' * 30)
     except (Exception, psycopg2.Error) as error:
