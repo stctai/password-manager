@@ -34,7 +34,7 @@ def find_password(app_name):
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchone()
-        pw = decrypt_password(result[0])
+        pw = decrypt_password(bytearray(result[0]))
         print('Password is: ', pw)
 
     except (Exception, psycopg2.Error) as error:
