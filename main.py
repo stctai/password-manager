@@ -1,13 +1,14 @@
 # Author: Minjie Shen
 import menu
 from menu import create, menu, find, find_accounts
-from master_password import get_master_passowrd
-
+from dotenv import load_dotenv
+import os
 
 def main():
-    input_password = input('Please provide the master password to start:')
-    master_password = get_master_passowrd()
-
+    input_password  = input('Please provide the master password to start:')
+    load_dotenv()
+    master_password = os.getenv("MASTER_PASSWORD")
+    
     if input_password == master_password:
         print("\nSucessfully Authenticated.\n")
     else:
