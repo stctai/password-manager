@@ -1,6 +1,6 @@
 # CS6760 Group 7 - Password Manager
 
-## Before you start
+## Setting Up
 By: Ke
 
 We are using PostgresSQL Database in Docker container to store passwords. 
@@ -35,7 +35,7 @@ To set up a new Docker container, with PostgreSQL installed, you need to do seve
    This command reads the requirements.txt file and installs the specified packages along with their versions.
 
 
-## How to create your password manager
+## How to Use
 By: Minjie
 
 After you start the app on your local machine through 
@@ -50,3 +50,19 @@ Once you are sucessfully authenticated, you will be provided with three choices:
    3. Find a password for a site or app.
 
 After all the operations you want to make, you can press Q to quit the application safely.
+
+
+## Encryption for Security
+The program uses Fernet library for the encrpytion and decryption of the password stored into the database. The Fernet library is a Python library for symmetric (also known as "secret key") authenticated cryptography. Here are some reasons why we chose the Fernet library over other options:
+
+1. Simplicity:
+   - Fernet provides a high-level, easy-to-use interface for symmetric key encryption and decryption.
+   - Generating keys and encrypting/decrypting data with Fernet is straightforward, making it a good choice for developers who want a simple and effective solution.
+2. Security:
+   - Fernet uses AES (Advanced Encryption Standard) in CBC (Cipher Block Chaining) mode for encryption, providing strong security.
+   - It also includes HMAC (Hash-based Message Authentication Code) to ensure the integrity of the encrypted data. This helps prevent tampering with the encrypted data.
+3. Key Management:
+   - Fernet handles key management automatically. We don't need to worry about key generation, distribution, or rotation; Fernet takes care of these aspects for us.
+   - This simplifies the implementation and reduces the risk of key mismanagement, which is a common source of security vulnerabilities.
+4. Python Standard Library Integration:
+   - Fernet is part of the cryptography library in Python, which is actively maintained and widely used. This integration with the Python standard library makes it a convenient choice for projects that want to leverage existing Python modules.
