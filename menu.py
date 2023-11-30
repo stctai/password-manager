@@ -9,7 +9,7 @@ def menu():
     print(('-' * 13) + 'Menu' + ('-' * 13))
     print('1. Create new password')
     print('2. Find all sites and apps connected to an email')
-    print('3. Find a password for a specific site or app')
+    print('3. Find a password for a specific site or app with given user name')
     print('Q. Exit')
     print('-' * 30)
     return input(': ')
@@ -50,7 +50,7 @@ def create():
     print('-' * 30)
     store_passwords(pw, user_email, username, url, app_name)
 
-# option 2： Find all sites and apps connected to an email'
+# option 2： Find all sites and apps connected to an email
 def find_accounts():
     # Option 2: 找到所有和这个email相关的网站
     print('Please provide the email that you want to find accounts for: ')

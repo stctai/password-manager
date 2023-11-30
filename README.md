@@ -46,8 +46,14 @@ After you start the app on your local machine through
 
 Once you are sucessfully authenticated, you will be provided with three choices:
    1. Create new password.
+         - you will be asked to input the length of the password you want to create (min 6 char)
+         - you will be asked to chose whether to include any number or special character in the password
+         - your generated password will be copied to your clipboard and ready to go!
    2. Find all sites and apps connected to an email.
-   3. Find a password for a site or app.
+         - you will be asked to input the email
+   3. Find a password for a specific site or app with given user name.
+         - you will be asked to input the app or site name and then input the user name
+         - your password will be copied to your clipboard and ready to go!
 
 After all the operations you want to make, you can press Q to quit the application safely.
 
