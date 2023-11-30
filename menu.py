@@ -18,8 +18,13 @@ def menu():
 def create():
     print('Please proivide the name of the site or app you want to generate a password for: ')
     app_name = input()
-    print("Please enter the length of the password: ")
+    print("Please enter the length of the password: (minimum length 6 characters)")
     length = input()
+    while length < 6:
+        print("The minimum length of password is 6 characters, please enter the new length: ")
+        length = input()
+        if length >= 6:
+            break
     print("Do you want your password to contain number? (type y/n)")
     choice_number = input()
     has_number = False
@@ -36,7 +41,6 @@ def create():
         username = ''
     url = input('Please paste the url to the site that you are creating the password for: ')
 
-    # TODO: generate_password function takes in length, has_number, and has_special_char
     pw = generate_password(length, has_number, has_special_char)
     subprocess.run('pbcopy', universal_newlines=True, input=pw)
     print('-' * 30)
