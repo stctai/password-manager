@@ -35,7 +35,7 @@ To set up a new Docker container, with PostgreSQL installed, you need to do seve
    This command reads the requirements.txt file and installs the specified packages along with their versions.
 
 4. Create a `.env` file in the root directory of the project. The `.env` file should contain your master password. 
-    Sample `.env` file (`password.env`):
+    Sample `password.env` file:
    ```
    MASTER_PASSWORD=password
    ```
