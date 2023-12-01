@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 def main():
-    input_password  = input('Please provide the master password to start:')
+    input_password  = input("Please provide the master password to start: ")
     load_dotenv()
     master_password = os.getenv('MASTER_PASSWORD')
 
