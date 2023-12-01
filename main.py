@@ -7,8 +7,8 @@ import os
 def main():
     input_password  = input('Please provide the master password to start:')
     load_dotenv()
-    master_password = os.getenv("MASTER_PASSWORD")
-    
+    master_password = os.getenv('MASTER_PASSWORD')
+
     if input_password == master_password:
         print("\nSucessfully Authenticated.\n")
     else:

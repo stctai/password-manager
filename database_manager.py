@@ -26,41 +26,40 @@ def connect():
         print(error)
 
 
-def find_password(app_name):
+def find_password(app_name, user_name):
     try:
         connection = connect()
         cursor = connection.cursor()
-        postgres_select_query = """ SELECT password FROM accounts WHERE app_name = '""" + app_name + "'"
+        postgres_select_query = """ SELECT password FROM accounts WHERE app_name = '""" + app_name + "'" + """ AND username = '""" + user_name + "'"
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchone()
         pw = decrypt_password(bytearray(result[0]))
-        print('Password is: ', pw)
+        return pw
 
     except (Exception, psycopg2.Error) as error:
         print(error)
 
 
-def find_users(user_email):
-    data = ('Serial ID: ', 'Password: ', 'Email: ', 'Username: ', 'url: ', 'App/Site name: ')
+def find_users(app_name):
+    data = ('Username: ', 'Email: ')
     try:
         connection = connect()
         cursor = connection.cursor()
-        postgres_select_query = """ SELECT * FROM accounts WHERE email = '""" + user_email + "'"
-        cursor.execute(postgres_select_query, user_email)
+        postgres_select_query = """ SELECT username, email FROM accounts WHERE app_name = '""" + app_name + "'"
+        cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchall()
         print('')
         print('Accounts Result:')
         print('')
+        num = 1
         for row in result:
-            for i in range(0, len(row) - 1):
-                if(i == 1):
-                    pw = decrypt_password(bytearray(row[i]))
-                    print(data[i] + str(pw))
-                else:
-                    print(data[i] + str(row[i]))
-        print('')
+            print('Account ' + str(num))
+            num += 1
+            for i in range(0, len(row)):
+                print(data[i] + str(row[i]))
+            print('')
         print('-' * 30)
     except (Exception, psycopg2.Error) as error:
         print(error)

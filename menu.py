@@ -8,18 +8,19 @@ def menu():
     print('-' * 30)
     print(('-' * 13) + 'Menu' + ('-' * 13))
     print('1. Create new password')
-    print('2. Find all sites and apps connected to an email')
+    print('2. Find all accounts for a specific site or app')
     print('3. Find a password for a specific site or app with given user name')
     print('Q. Exit')
     print('-' * 30)
     return input(': ')
+
 
 # option 1: Create new password
 def create():
     print('Please proivide the name of the site or app you want to generate a password for: ')
     app_name = input()
     print("Please enter the length of the password: (minimum length 6 characters)")
-    length = input()
+    length = int(input())
     while length < 6:
         print("The minimum length of password is 6 characters, please enter the new length: ")
         length = input()
@@ -50,12 +51,14 @@ def create():
     print('-' * 30)
     store_passwords(pw, user_email, username, url, app_name)
 
-# option 2： Find all sites and apps connected to an email
+
+# option 2： Find all accounts for an App
 def find_accounts():
-    # Option 2: 找到所有和这个email相关的网站
-    print('Please provide the email that you want to find accounts for: ')
-    user_email = input()
-    find_users(user_email)
+    # Option 2: 找到所有和这个app相关的accounts
+    print('Please provide the name of the site or app that you want to find accounts for: ')
+    app_name = input()
+    find_users(app_name)
+
 
 # option 3: Find a password for a specific site or app
 def find():

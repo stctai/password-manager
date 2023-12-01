@@ -27,13 +27,22 @@ To set up a new Docker container, with PostgreSQL installed, you need to do seve
       docker run --name my-password-manager-container -p 5432:5432 -d my-password-manager-db
       ```
 
-3. Intall the the packages listed in the requirements.txt file with the specified versions
+3. Intall the packages listed in the requirements.txt file with the specified versions.
    Run this command in this project terminal
       ```
       pip install -r requirements.txt
       ```
    This command reads the requirements.txt file and installs the specified packages along with their versions.
 
+4. Create a `.env` file in the root directory of the project. The `.env` file should contain your master password. 
+    Sample `.env` file (`password.env`):
+   ```
+   MASTER_PASSWORD=password
+   ```
+   Source the .env file and exporting them as environment variables. If you are using a Mac, you can do the following:
+   ```
+   export $(xargs < password.env)
+   ```
 
 ## How to Use
 By: Minjie
