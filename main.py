@@ -1,6 +1,6 @@
 # Author: Minjie Shen
 import menu
-from menu import create, menu, find, find_accounts
+from menu import create, menu, find, find_accounts, history
 from dotenv import load_dotenv
 import os
 
@@ -23,6 +23,8 @@ def main():
             find_accounts()
         elif choice == '3':
             find()
+        elif choice == '4':
+            history()
         else:
             print("Invalid choice. Please try again.")
 

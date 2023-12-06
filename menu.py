@@ -1,6 +1,6 @@
 # Author: Minjie Shen
 import subprocess
-from database_manager import store_passwords, find_password, find_users
+from database_manager import store_passwords, find_password, find_users, find_history
 from password_generator import generate_password
 
 
@@ -10,6 +10,7 @@ def menu():
     print('1. Create new password')
     print('2. Find all accounts for a specific site or app')
     print('3. Find a password for a specific site or app with given user name')
+    print('4. Password access history')
     print('Q. Exit')
     print('-' * 30)
     return input(': ')
@@ -61,7 +62,9 @@ def find_accounts():
     print("Please provide the name of the site or app that you want to find accounts for: ")
     app_name = input()
     find_users(app_name)
-
+    print('')
+    print('-' * 30)
+    print('')
 
 # option 3: Find a password for a specific site or app
 def find():
@@ -78,5 +81,11 @@ def find():
     print('-' * 30)
     print('')
     print("Your password has now been retrieved and copied to your clipboard")
+    print('')
+    print('-' * 30)
+
+def history():
+    print("The most recent 10 accounts that you have retrieved passwords for: ")
+    find_history()
     print('')
     print('-' * 30)

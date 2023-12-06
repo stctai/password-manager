@@ -63,6 +63,7 @@ Once you are sucessfully authenticated, you will be provided with three choices:
    3. Find a password for a specific site or app with given user name.
          - you will be asked to input the app or site name and then input the user name
          - your password will be copied to your clipboard and ready to go!
+   4. Find the password access history.
 
 After all the operations you want to make, you can press Q to quit the application safely.
 

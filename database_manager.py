@@ -1,5 +1,6 @@
 # Author: Ke
 import psycopg2
+from psycopg2 import sql
 
 from password_crypto import encrypt_password, decrypt_password
 
@@ -23,6 +24,7 @@ def connect():
                                       database='password_manager')
         return connection
     except (Exception, psycopg2.Error) as error:
+        print("Database connection failed")
         print(error)
 
 
@@ -31,13 +33,18 @@ def find_password(app_name, user_name):
         connection = connect()
         cursor = connection.cursor()
         postgres_select_query = """ SELECT password FROM accounts WHERE app_name = '""" + app_name + "'" + """ AND username = '""" + user_name + "'"
-        cursor.execute(postgres_select_query, app_name)
+        cursor.execute(postgres_select_query)
         connection.commit()
         result = cursor.fetchone()
-        pw = decrypt_password(bytearray(result[0]))
-        return pw
+        if result is not None:
+            pw = decrypt_password(bytearray(result[0]))
+            postgres_update_query = """ UPDATE accounts SET last_time_retrieved = CURRENT_TIMESTAMP WHERE app_name = '""" + app_name + "'" + """ AND username = '""" + user_name + "'"
+            cursor.execute(postgres_update_query)
+            connection.commit()
+            return pw
 
     except (Exception, psycopg2.Error) as error:
+        print("Account not found")
         print(error)
 
 
@@ -50,6 +57,7 @@ def find_users(app_name):
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchall()
+        print(result)
         print('')
         print('Accounts Result:')
         print('')
@@ -60,6 +68,29 @@ def find_users(app_name):
             for i in range(0, len(row)):
                 print(data[i] + str(row[i]))
             print('')
-        print('-' * 30)
+
+    except (Exception, psycopg2.Error) as error:
+        print("Account not found")
+        print(error)
+
+
+def find_history():
+    data = ('App Name: ', 'Username: ', 'Email: ', 'Last Time Accessed: ')
+    try:
+        connection = connect()
+        cursor = connection.cursor()
+        postgres_select_query = """ SELECT app_name, username, email, last_time_retrieved FROM accounts WHERE last_time_retrieved IS NOT NULL ORDER BY last_time_retrieved DESC LIMIT 10"""
+        cursor.execute(postgres_select_query)
+        connection.commit()
+        result = cursor.fetchall()
+        print('')
+        num = 1
+        for row in result:
+            print('Account ' + str(num))
+            num += 1
+            for i in range(0, len(row)):
+                print(data[i] + str(row[i]))
+            print('')
+
     except (Exception, psycopg2.Error) as error:
         print(error)
