@@ -57,7 +57,6 @@ def find_users(app_name):
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchall()
-        print(result)
         print('')
         print('Accounts Result:')
         print('')
